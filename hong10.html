@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hong10</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div id="scroll-image">
+    <img src="hong1.jpg" class="hong">
+    <img src="hong2.jpg" class="hong">
+<!--    <img src="hong3.jpg" class="hong">-->
+</div>
+
+<script>
+    imageTransition();
+    function imageTransition() {
+        const images = document.getElementsByClassName("hong");
+        for (let i = 0; i < images.length; i++) {
+            images[i].style.opacity = 1;
+        }
+        let cur = images.length - 1; /* why not 0? */
+        let top = 1;
+
+        setInterval(changeImage, 3000);
+        async function changeImage() {
+            let nextImage = (cur + 1) % images.length;
+            images[cur].style.zIndex = top + 1; /* top is ok? */
+            images[nextImage].style.zIndex = top;
+
+            await transition();
+
+
+            images[cur].style.zIndex = top;
+            images[nextImage].style.zIndex = top + 1;
+            images[cur].style.opacity = 1;
+            top++;
+            cur = nextImage;
+        }
+        function transition() {
+            // let trans = setInterval(changeOpacity, 10);
+            // function changeOpacity() {
+            //     images[cur].style.opacity -= 0.01;
+            //     if (images[cur].style.opacity <= 0) {
+            //         clearInterval(trans);
+            //         return;
+            //     }
+            // }
+            return new Promise(function(resolve, reject) {
+                var del = 0.01;
+
+                var id = setInterval(changeOpacity, 10);
+
+                function changeOpacity() {
+                    images[cur].style.opacity -= del;
+                    if (images[cur].style.opacity <= 0) {
+                        clearInterval(id);
+                        resolve();
+                    }
+                }
+
+            })
+        }
+
+    }
+</script>
+
+</body>
+</html>
+
