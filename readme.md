@@ -2,7 +2,7 @@
 
 效果图(Chrome 浏览器)：
 
-![](https://pic2.zhimg.com/80/v2-3a1dd22f4f61c0813bd656b626d4205b_1440w.png)
+![](https://img-blog.csdnimg.cn/img_convert/1b4a42dd0e1f0f9d2a80baa136497a87.png#pic_center)
 
 进入页面后，鼠标悬浮在顶部，`Breaking`会变的更亮并且标有下划线。点击顶部，图片渐变到`Welcome to My Page` 界面，再次点击即可恢复原状。
 
